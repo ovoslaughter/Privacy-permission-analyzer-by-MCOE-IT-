@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Privacy Permission Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="heading">
+        <h1>🔐 Privacy Permission Analyzer</h1>
+        <p>Check whether an app requests sensitive permissions</p>
+    </div>
+
+    <div class="card">
+        <form method="POST">
+
+            <label>App Name</label>
+            <input type="text" name="app_name" placeholder="Enter app name" required>
+
+            <label>Select App Permissions</label>
+
+            <div class="permissions">
+                {% for permission in permissions %}
+                <label class="permission">
+                    <input type="checkbox" name="permissions" value="{{ permission }}">
+                    {{ permission }}
+                </label>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Analyze Permissions</button>
+
+        </form>
+    </div>
+
+    {% if result %}
+    <div class="card result">
+
+        <h2>Analysis Result</h2>
+
+        <p><b>App Name:</b> {{ result.app_name }}</p>
+
+        <h3>Suspicious Permissions</h3>
+
+        {% if result.suspicious %}
+            {% for permission in result.suspicious %}
+            <div class="result-item suspicious">
+                <b>{{ permission }}</b>
+                <span>{{ risky_permissions[permission] }}</span>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
+
+        <h3>Other Permissions</h3>
+
+        {% if result.normal %}
+            {% for permission in result.normal %}
+            <div class="result-item normal">
+                {{ permission }}
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
+
+        <div class="risk">
+            <b>Privacy Risk Level: {{ result.risk }}</b>
+            <p>{{ result.message }}</p>
+        </div>
+
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #101827;
+    color: white;
+}
+
+.container {
+    width: 800px;
+    max-width: 90%;
+    margin: 40px auto;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.heading h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.heading p {
+    color: #aeb8c8;
+}
+
+.card {
+    background: #202b3b;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    background: #394558;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 22px;
+}
+
+.permissions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.permission {
+    background: #394558;
+    padding: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.permission input {
+    margin-right: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    background: #2867e8;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1f59ce;
+}
+
+.result h2 {
+    margin-top: 0;
+}
+
+.result h3 {
+    margin-top: 25px;
+}
+
+.result-item {
+    padding: 12px;
+    border-radius: 6px;
+    margin: 8px 0;
+}
+
+.result-item span {
+    display: block;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.suspicious {
+    background: #4a3034;
+}
+
+.normal {
+    background: #303d50;
+}
+
+.risk {
+    margin-top: 25px;
+    padding: 15px;
+    background: #303d50;
+    border-radius: 8px;
+}
+
+@media (max-width: 650px) {
+    .permissions {
+        grid-template-columns: 1fr;
+    }
+
+    .heading h1 {
+        font-size: 25px;
+    }
+}
